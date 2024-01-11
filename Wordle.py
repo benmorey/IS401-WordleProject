@@ -21,9 +21,9 @@ def wordle():
     rand_word = FIVE_LETTER_WORDS[rand_num]
 
     #Assigns the selected word to the boxes
-    for i in (N_COLS - 1)
-    gw.set_square_letter(0, i, rand_word[i])
-    
+    for i in range(N_COLS):
+        gw.set_square_letter(0, i, rand_word[i].upper())
+
     gw.add_enter_listener(enter_action)
 
 # Startup code
