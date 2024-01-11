@@ -16,6 +16,7 @@ def wordle():
         gw.show_message("You have to implement this method.")
 
     gw = WordleGWindow()
+    
     # Gets a FIVE_LETTER_WORD from WordleDictionary
     rand_num = random.randint(0, len(FIVE_LETTER_WORDS) - 1)
     rand_word = FIVE_LETTER_WORDS[rand_num]
