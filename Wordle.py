@@ -17,10 +17,13 @@ def wordle():
 
     gw = WordleGWindow()
     # Gets a FIVE_LETTER_WORD from WordleDictionary
-    
     rand_num = random.randint(0, len(FIVE_LETTER_WORDS) - 1)
     rand_word = FIVE_LETTER_WORDS[rand_num]
-    print(rand_word)
+
+    #Assigns the selected word to the boxes
+    for i in (N_COLS - 1)
+    gw.set_square_letter(0, i, rand_word[i])
+    
     gw.add_enter_listener(enter_action)
 
 # Startup code
