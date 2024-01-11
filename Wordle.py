@@ -16,6 +16,10 @@ def wordle():
         gw.show_message("You have to implement this method.")
 
     gw = WordleGWindow()
+    # Gets a FIVE_LETTER_WORD from WordleDictionary
+    
+    rand_word = random.randint(0, len(FIVE_LETTER_WORDS) - 1)
+    print(rand_word)
     gw.add_enter_listener(enter_action)
 
 # Startup code
