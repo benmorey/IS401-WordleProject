@@ -11,19 +11,27 @@ from WordleDictionary import FIVE_LETTER_WORDS
 from WordleGraphics import WordleGWindow, N_COLS, N_ROWS
 
 def wordle():
-
-    def enter_action(s):
-        gw.show_message("You have to implement this method.")
-
     gw = WordleGWindow()
-    
-    # Gets a FIVE_LETTER_WORD from WordleDictionary
-    rand_num = random.randint(0, len(FIVE_LETTER_WORDS) - 1)
-    rand_word = FIVE_LETTER_WORDS[rand_num]
+    def enter_action(s):
+        current_word = gw.get_current_row()
+        print(current_word)
+        for i in FIVE_LETTER_WORDS:
+            if FIVE_LETTER_WORDS[i] == current_word:
+                realWordBool = True
+            else:
+                realWordBool = False
+        if realWordBool == True:
+            gw.show_message("This is a word! But are you right??? (Milestone 2)")
+        else:
+            gw.show_message("This is not a word!  (Milestone 2)")
+            
+    # # Gets a FIVE_LETTER_WORD from WordleDictionary
+    # rand_num = random.randint(0, len(FIVE_LETTER_WORDS) - 1)
+    # rand_word = FIVE_LETTER_WORDS[rand_num]
 
-    #Assigns the selected word to the boxes
-    for i in range(N_COLS):
-        gw.set_square_letter(0, i, rand_word[i].upper())
+    # #Assigns the selected word to the boxes
+    # for i in range(N_COLS):
+    #     gw.set_square_letter(0, i, rand_word[i].upper())
 
     gw.add_enter_listener(enter_action)
 
