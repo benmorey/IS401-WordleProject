@@ -24,8 +24,8 @@ def wordle():
     #this code pulls the actual word at the start of the game
     wordArray = []
     booleanArray = [False, False, False, False, False]
-    #actual_word = FIVE_LETTER_WORDS[random.randint(1,len(FIVE_LETTER_WORDS))]
-    actual_word = 'glass'
+    actual_word = FIVE_LETTER_WORDS[random.randint(1,len(FIVE_LETTER_WORDS))]
+    #actual_word = 'glass'
     for letter in actual_word:
         wordArray.append(letter)
       
@@ -68,7 +68,7 @@ def wordle():
             for i in range(0,5):
                 booleanArray[i] = False
         else:
-            gw.show_message("This is not a word!  (Milestone 2)")
+            gw.show_message("This is not a word!  Try again!")
                 
         
         
