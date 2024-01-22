@@ -25,18 +25,20 @@ def wordle():
     wordArray = []
     booleanArray = [False, False, False, False, False]
     actual_word = FIVE_LETTER_WORDS[random.randint(1,len(FIVE_LETTER_WORDS))]
-    #actual_word = 'glass'
+    actual_word = 'glass'
     for letter in actual_word:
         wordArray.append(letter)
       
         
     
     gw = WordleGWindow()
+    
+
     def enter_action(s):
         
         word, row = get_word(gw) #calls the get_word function
         if word in FIVE_LETTER_WORDS: #shows the user a message of whether or not their word is actually a word
-            gw.show_message("This is a word! But are you right???")
+            #gw.show_message("This is a word! But are you right???")
             #loop to check for green letters
             guessWord = []
             for x in word:
@@ -64,14 +66,24 @@ def wordle():
                           
             row = row + 1
             gw.set_current_row(row)
+                            #end of game functionality
+            if booleanArray == [True,True,True,True,True]:
+                gw.set_current_row(5)
+                gw.show_message("That's the correct word! You win!\n press the right arrow for a new game")
+            #Here I want to make an option for the  user to start a new wordle game with a new word using the right arrow key
+            
+            
             #Resets the markers
             for i in range(0,5):
                 booleanArray[i] = False
+
+
         else:
             gw.show_message("This is not a word!  Try again!")
-                
-        
-        
+            #trying to create functionality for when the
+        if booleanArray == [True,True,True,True,True]:
+            gw.show_message("That's the correct word! You win!")
+            gw.reset_game()        
     
         
 

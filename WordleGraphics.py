@@ -101,16 +101,22 @@ class WordleGWindow:
             #this ELIF is how the backspace key is handled. -Johnny
             elif tke.keysym.upper() == "BACKSPACE":
                     ch = "BACKSPACE"
+            elif tke.keysym.upper() == "RIGHT":
+                ch = "RIGHT"   
+                print(ch)  
+                #confirmed the right key is linked to thsi functionality 
             else:
-            
+                
                 ch = tke.char.upper()
-
             if ch == "\007" or ch == "\177" or ch in  ["DELETE","BACKSPACE"]:
                 self.show_message("")
                 if self._row < N_ROWS and self._col > 0:
                     self._col -= 1
                     sq = self._grid[self._row][self._col]
                     sq.set_letter(" ")
+            elif ch == "RIGHT":
+                #the right key starts a new game in the same screen
+                variable = "value"
             elif ch == "\r" or ch == "\n" or ch == "ENTER":
                 self.show_message("")
                 s = ""
@@ -124,6 +130,7 @@ class WordleGWindow:
                     sq = self._grid[self._row][self._col]
                     sq.set_letter(ch)
                     self._col += 1
+
 
         def press_action(tke):
             self._down_x = tke.x
