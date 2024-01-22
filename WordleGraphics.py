@@ -98,9 +98,14 @@ class WordleGWindow:
         def key_action(tke):
             if isinstance(tke, str):
                 ch = tke.upper()
+            #this ELIF is how the backspace key is handled. -Johnny
+            elif tke.keysym.upper() == "BACKSPACE":
+                    ch = "BACKSPACE"
             else:
+            
                 ch = tke.char.upper()
-            if ch == "\007" or ch == "\177" or ch == "DELETE":
+
+            if ch == "\007" or ch == "\177" or ch in  ["DELETE","BACKSPACE"]:
                 self.show_message("")
                 if self._row < N_ROWS and self._col > 0:
                     self._col -= 1

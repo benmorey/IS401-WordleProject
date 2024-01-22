@@ -36,7 +36,7 @@ def wordle():
         
         word, row = get_word(gw) #calls the get_word function
         if word in FIVE_LETTER_WORDS: #shows the user a message of whether or not their word is actually a word
-            gw.show_message("This is a word! But are you right??? (Milestone 2)")
+            gw.show_message("This is a word! But are you right???")
             #loop to check for green letters
             guessWord = []
             for x in word:
