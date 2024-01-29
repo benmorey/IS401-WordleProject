@@ -10,7 +10,7 @@ import random
 from WordleDictionary import FIVE_LETTER_WORDS
 from WordleGraphics import WordleGWindow, N_COLS, N_ROWS, CORRECT_COLOR, PRESENT_COLOR, MISSING_COLOR, UNKNOWN_COLOR, KEY_COLOR
 
-gameNum = 0
+global gameNum
 
     #this function returns the word we just entered
 def get_word(window):
@@ -22,7 +22,7 @@ def get_word(window):
 def wordle():
     
     #this code pulls the actual word at the start of the game
-    gameNum = gameNum + 1
+    gameNum = 1
     wordArray = []
     booleanArray = [False, False, False, False, False]
     actual_word = FIVE_LETTER_WORDS[random.randint(1,len(FIVE_LETTER_WORDS))]
@@ -36,7 +36,7 @@ def wordle():
     
 
     def enter_action(s):
-        
+        row = 0
         word, row = get_word(gw) #calls the get_word function
         if word in FIVE_LETTER_WORDS: #shows the user a message of whether or not their word is actually a word
             #gw.show_message("This is a word! But are you right???")
@@ -64,10 +64,11 @@ def wordle():
                           
             row = row + 1
             gw.set_current_row(row)
-                            #end of game functionality
+            
+            #end of game functionality
             if booleanArray == [True,True,True,True,True]:
                 gw.set_current_row(5)
-                gw.show_message("That's the correct word! You win!\n press the right arrow for a new game")
+                gw.show_message("That's the correct word! You win!\n Go to the share.txt file to share your results!")
             #Here I want to make an option for the  user to start a new wordle game with a new word using the right arrow key
             
             
@@ -83,14 +84,17 @@ def wordle():
             gw.show_message("That's the correct word! You win!")
             gw.reset_game()        
     
+     
     # Make a button that turns the colors into a colorblind action
-    
+        def finish_game():
+            f  = open("share.txt", "w+")
+            f.write("Today's Wordle Stats: " + row + "/6\n\n")
+            f.write()
+
     # Make a share text file 
     gw.add_enter_listener(enter_action)
 
-    def finish_game():
-        f  = open("share.txt", "w+")
-        f.write("Wordle #" + gameNum)
+
 
 # Startup code
 
