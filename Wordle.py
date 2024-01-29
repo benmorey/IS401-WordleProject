@@ -73,11 +73,12 @@ def wordle():
             for i in range(0,5):
                 if gw.get_square_color(row,i) == CORRECT_COLOR:
                     shareOutput = shareOutput + "🟩"
-                if gw.get_square_color(row,i) == PRESENT_COLOR:
+                elif gw.get_square_color(row,i) == PRESENT_COLOR:
                     shareOutput = shareOutput + "🟨"
                 else:
                     shareOutput = shareOutput + "⬛"
             shareOutput = shareOutput + "\n"
+            print(shareOutput)
 
 
         else:
@@ -87,7 +88,11 @@ def wordle():
         # End of game Functionality
         if booleanArray == [True,True,True,True,True]:
             gw.show_message("That's the correct word! You win!\nShare by copying the share.txt file!")
-            gw.reset_game()
+            f  = open("share.txt", "w+")
+            f.write("Today's Wordle Stats: " + str(row) + "/6\n\n")
+            f.write(shareOutput)
+            f.close()
+            exit()
 
         for i in range(0,5):
             booleanArray[i] = False    
@@ -97,10 +102,7 @@ def wordle():
     
      
     # Make a button that turns the colors into a colorblind action
-        def finish_game():
-            f  = open("share.txt", "w+")
-            f.write("Today's Wordle Stats: " + row + "/6\n\n")
-            f.write(shareOutput)
+
 
     # Make a share text file 
     gw.add_enter_listener(enter_action)

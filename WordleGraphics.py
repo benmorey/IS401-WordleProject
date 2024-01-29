@@ -143,7 +143,7 @@ class WordleGWindow:
                     ch = "BACKSPACE"
             elif tke.keysym.upper() == "RIGHT":
                 ch = "RIGHT"   
-                print(ch)  
+                #print(ch)  
                 #confirmed the right key is linked to this functionality 
             elif tke.keysym.upper() == "ALT_L":
                 change_color_scheme()
