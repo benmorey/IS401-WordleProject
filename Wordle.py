@@ -10,6 +10,7 @@ import random
 from WordleDictionary import FIVE_LETTER_WORDS
 from WordleGraphics import WordleGWindow, N_COLS, N_ROWS, CORRECT_COLOR, PRESENT_COLOR, MISSING_COLOR, UNKNOWN_COLOR, KEY_COLOR
 
+gameNum = 0
 
     #this function returns the word we just entered
 def get_word(window):
@@ -18,10 +19,10 @@ def get_word(window):
     current_word = current_word.lower()
     return current_word, row
 
-
 def wordle():
     
     #this code pulls the actual word at the start of the game
+    gameNum = gameNum + 1
     wordArray = []
     booleanArray = [False, False, False, False, False]
     actual_word = FIVE_LETTER_WORDS[random.randint(1,len(FIVE_LETTER_WORDS))]
@@ -44,9 +45,6 @@ def wordle():
             for x in word:
                 guessWord.append(x)
                 
-            
-            
-            
             #iterates through the entire guessword
             for i in range(0,5):
                 if wordArray[i] == guessWord[i]:
@@ -85,20 +83,14 @@ def wordle():
             gw.show_message("That's the correct word! You win!")
             gw.reset_game()        
     
-        
-
-
-
-
-    # # Gets a FIVE_LETTER_WORD from WordleDictionary
-    # rand_num = random.randint(0, len(FIVE_LETTER_WORDS) - 1)
-    # rand_word = FIVE_LETTER_WORDS[rand_num]
-
-    # #Assigns the selected word to the boxes
-    # for i in range(N_COLS):
-    #     gw.set_square_letter(0, i, rand_word[i].upper())
-
+    # Make a button that turns the colors into a colorblind action
+    
+    # Make a share text file 
     gw.add_enter_listener(enter_action)
+
+    def finish_game():
+        f  = open("share.txt", "w+")
+        f.write("Wordle #" + gameNum)
 
 # Startup code
 
