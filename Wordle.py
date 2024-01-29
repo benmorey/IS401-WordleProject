@@ -72,24 +72,18 @@ def wordle():
                           
             row = row + 1
             gw.set_current_row(row)
-                            #end of game functionality
-            if booleanArray == [True,True,True,True,True]:
-                gw.set_current_row(5)
-                gw.show_message("That's the correct word! You win!\n press the right arrow for a new game")
-            #Here I want to make an option for the  user to start a new wordle game with a new word using the right arrow key
-            
-            
-            #Resets the markers
-            for i in range(0,5):
-                booleanArray[i] = False
-
 
         else:
             gw.show_message("This is not a word!  Try again!")
             #trying to create functionality for when the
+
+        # End of game Functionality
         if booleanArray == [True,True,True,True,True]:
             gw.show_message("That's the correct word! You win!")
-            gw.reset_game()        
+            gw.reset_game()
+
+        for i in range(0,5):
+            booleanArray[i] = False        
     
      
     # Make a button that turns the colors into a colorblind action
