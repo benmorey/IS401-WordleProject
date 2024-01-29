@@ -306,6 +306,19 @@ class WordleKey:
         self._canvas.itemconfig(self._frame, fill=color)
         self._canvas.itemconfig(self._text, fill=fg)
 
+    
+    def show_stats(self, correct_attempts, total_attempts):
+        """Show overall statistics in a pop-up window."""
+        stats_window = tkinter.Toplevel(self._root)
+        stats_window.title("Overall Statistics")
+
+        stats_text = f"Correct Attempts: {correct_attempts}\nTotal Attempts: {total_attempts}"
+        stats_label = tkinter.Label(stats_window, text=stats_text, font=("Helvetica Neue", -16))
+        stats_label.pack(pady=20)
+
+        close_button = tkinter.Button(stats_window, text="Close", command=stats_window.destroy)
+        close_button.pack(pady=10)
+
 
 class WordleMessage:
 
