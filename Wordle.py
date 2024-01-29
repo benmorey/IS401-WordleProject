@@ -20,7 +20,15 @@ def get_word(window):
     return current_word, row
 
 def wordle():
-    
+    CORRECT_VARIABLE = CORRECT_COLOR
+    PRESENT_VARIABLE = PRESENT_COLOR
+    color_scheme = input("Do you want to use high contrast mode? (y/n)")
+    if color_scheme == "y":
+        CORRECT_VARIABLE = "#FFA500"
+        PRESENT_VARIABLE = "#0000FF"
+    else:
+        CORRECT_VARIABLE = CORRECT_COLOR
+        PRESENT_VARIABLE = PRESENT_COLOR
     #this code pulls the actual word at the start of the game
     gameNum = gameNum + 1
     wordArray = []
@@ -48,7 +56,7 @@ def wordle():
             #iterates through the entire guessword
             for i in range(0,5):
                 if wordArray[i] == guessWord[i]:
-                    gw.set_square_color(row, i, CORRECT_COLOR)
+                    gw.set_square_color(row, i, CORRECT_VARIABLE)
                     booleanArray[i] = True
                     # guessWord[i] = '-' 
                        
@@ -56,19 +64,15 @@ def wordle():
             #loop to check for tan letters
             for i in range(0,5):
                 for j in range(0,5):
-                    if wordArray[i] == guessWord[j] and gw.get_square_color(row,j) != CORRECT_COLOR and booleanArray[i] == False:
-                        gw.set_square_color(row, j, PRESENT_COLOR)
+                    if wordArray[i] == guessWord[j] and gw.get_square_color(row,j) != CORRECT_VARIABLE and booleanArray[i] == False:
+                        gw.set_square_color(row, j, PRESENT_VARIABLE)
                         booleanArray[i] = True
                         # guessWord[j] = '-'
                         
                           
             row = row + 1
             gw.set_current_row(row)
-                            #end of game functionality
-            if booleanArray == [True,True,True,True,True]:
-                gw.set_current_row(5)
-                gw.show_message("That's the correct word! You win!\n press the right arrow for a new game")
-            #Here I want to make an option for the  user to start a new wordle game with a new word using the right arrow key
+
             
             
             #Resets the markers
