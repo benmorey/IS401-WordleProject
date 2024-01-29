@@ -12,14 +12,54 @@ import tkinter
 
 # Constants
 
+
+
 N_ROWS = 6			# Number of rows
 N_COLS = 5			# Number of columns
+
+
+
+
+        
+
+color_var = 1
+def change_color_scheme():
+    if color_var == 1:
+        CORRECT_COLOR = "#FFA500" 
+        PRESENT_COLOR = "#0000FF"
+        color_var = 0
+    elif color_var == 2:
+        CORRECT_COLOR = "#66BB66"      
+        PRESENT_COLOR = "#CCBB66"
+        color_var = 1
+        
+        
+        
+
+
+
+
 
 CORRECT_COLOR = "#66BB66"       # Light green for correct letters
 PRESENT_COLOR = "#CCBB66"       # Brownish yellow for misplaced letters
 MISSING_COLOR = "#999999"       # Gray for letters that don't appear
-UNKNOWN_COLOR = "#FFFFFF"       # Undetermined letters are white
-KEY_COLOR = "#DDDDDD"           # Keys are colored light gray
+UNKNOWN_COLOR = "#FFFFFF"  
+
+
+GREEN = "#66BB66" 
+YELLOW = "#CCBB66"
+LIGHT_GRAY = "#999999" 
+                                # Undetermined letters are white
+KEY_COLOR = "#DDDDDD"  
+BLUE = "#0000FF"
+ORANGE = "#FFA500"
+GRAY = "#808080"
+
+
+
+
+
+                        # Keys are colored light gray
 
 CANVAS_WIDTH = 500		# Width of the tkinter canvas (pixels)
 CANVAS_HEIGHT = 700		# Height of the tkinter canvas (pixels)
@@ -104,9 +144,11 @@ class WordleGWindow:
             elif tke.keysym.upper() == "RIGHT":
                 ch = "RIGHT"   
                 print(ch)  
-                #confirmed the right key is linked to thsi functionality 
+                #confirmed the right key is linked to this functionality 
+            elif tke.keysym.upper() == "ALT_L":
+                change_color_scheme()
             else:
-                
+                print(tke.keysym.upper())
                 ch = tke.char.upper()
             if ch == "\007" or ch == "\177" or ch in  ["DELETE","BACKSPACE"]:
                 self.show_message("")
