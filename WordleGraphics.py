@@ -11,34 +11,8 @@ import time
 import tkinter
 
 # Constants
-
-
-
 N_ROWS = 6			# Number of rows
 N_COLS = 5			# Number of columns
-
-
-
-
-        
-
-color_var = 1
-def change_color_scheme():
-    if color_var == 1:
-        CORRECT_COLOR = "#FFA500" 
-        PRESENT_COLOR = "#0000FF"
-        color_var = 0
-    elif color_var == 2:
-        CORRECT_COLOR = "#66BB66"      
-        PRESENT_COLOR = "#CCBB66"
-        color_var = 1
-        
-        
-        
-
-
-
-
 
 CORRECT_COLOR = "#66BB66"       # Light green for correct letters
 PRESENT_COLOR = "#CCBB66"       # Brownish yellow for misplaced letters
@@ -56,7 +30,16 @@ ORANGE = "#FFA500"
 GRAY = "#808080"
 
 
-
+color_var = 1
+def change_color_scheme():
+    if color_var == 1:
+        CORRECT_COLOR = "#FFA500" 
+        PRESENT_COLOR = "#0000FF"
+        color_var = 0
+    elif color_var == 2:
+        CORRECT_COLOR = "#66BB66"      
+        PRESENT_COLOR = "#CCBB66"
+        color_var = 1
 
 
                         # Keys are colored light gray

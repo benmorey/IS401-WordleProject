@@ -22,7 +22,8 @@ def get_word(window):
 def wordle():
     CORRECT_VARIABLE = CORRECT_COLOR
     PRESENT_VARIABLE = PRESENT_COLOR
-    color_scheme = input("Do you want to use high contrast mode? (y/n)")
+    name = input("\nWhat's your name: ")
+    color_scheme = input("Do you want to use high contrast mode? (y/n) ")
     if color_scheme == "y":
         CORRECT_VARIABLE = "#FFA500"
         PRESENT_VARIABLE = "#0000FF"
@@ -34,16 +35,13 @@ def wordle():
     wordArray = []
     booleanArray = [False, False, False, False, False]
     actual_word = FIVE_LETTER_WORDS[random.randint(1,len(FIVE_LETTER_WORDS))]
-    actual_word = 'glass'
     for letter in actual_word:
         wordArray.append(letter)
-      
-        
     
     gw = WordleGWindow()
     
-
     def enter_action(s):
+        outputArray = []
         shareOutput = ""
         row = 0
         word, row = get_word(gw) #calls the get_word function
@@ -59,7 +57,6 @@ def wordle():
                 if wordArray[i] == guessWord[i]:
                     gw.set_square_color(row, i, CORRECT_VARIABLE)
                     booleanArray[i] = True
-                    # guessWord[i] = '-' 
                        
                     
             #loop to check for tan letters
@@ -70,44 +67,46 @@ def wordle():
                         booleanArray[i] = True
                         # guessWord[j] = '-'
 
-            for i in range(0,5):
-                if gw.get_square_color(row,i) == CORRECT_COLOR:
-                    shareOutput = shareOutput + "🟩"
-                elif gw.get_square_color(row,i) == PRESENT_COLOR:
-                    shareOutput = shareOutput + "🟨"
-                else:
-                    shareOutput = shareOutput + "⬛"
-            shareOutput = shareOutput + "\n"
-            print(shareOutput)
-
-
         else:
             gw.show_message("This is not a word!  Try again!")
             #trying to create functionality for when the
 
+        for i in range(0,6):
+            for j in range(0,5):
+                if gw.get_square_color(i,j) == CORRECT_VARIABLE:
+                    shareOutput = shareOutput + "🟩"
+                elif gw.get_square_color(i,j) == PRESENT_VARIABLE:
+                    shareOutput = shareOutput + "🟨"
+                else:
+                    shareOutput = shareOutput + "⬛"
+            outputArray.append(shareOutput)
+            shareOutput = ''
+
         # End of game Functionality
         if booleanArray == [True,True,True,True,True]:
-            gw.show_message("That's the correct word! You win!\nShare by copying the share.txt file!")
-            f  = open("share.txt", "w+")
-            f.write("Today's Wordle Stats: " + str(row) + "/6\n\n")
-            f.write(shareOutput)
-            f.close()
-            exit()
+            
+            print("\n" + name + "'s Wordle Stats: " + str(row + 1) + "/6\n\n")
+            for i in range(0,row+1):
+                print(outputArray[i])
 
         for i in range(0,5):
             booleanArray[i] = False    
 
         row = row + 1
-        gw.set_current_row(row)    
-    
-     
-    # Make a button that turns the colors into a colorblind action
+        if(row == 6):
+            gw.show_message("We're sorry, but the word was: " + actual_word)
+            print("\n" + name + "'s Wordle Stats: " + str(row) + "/6\n\n")
+            for i in range(0,row+1):
+                if (i == 6):
+                    continue
+                else:
+                    print(outputArray[i])
+        else:
+            gw.set_current_row(row)
 
-
-    # Make a share text file 
+        print("\n")
+           
     gw.add_enter_listener(enter_action)
-
-
 
 # Startup code
 
