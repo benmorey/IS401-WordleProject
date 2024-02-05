@@ -121,7 +121,7 @@ class WordleGWindow:
         def key_action(tke):
             if isinstance(tke, str):
                 ch = tke.upper()
-            #this ELIF is how the backspace key is handled. -Johnny
+            #this ELIF is how the backspace key is handled. 
             elif tke.keysym.upper() == "BACKSPACE":
                     ch = "BACKSPACE"
             elif tke.keysym.upper() == "RIGHT":
