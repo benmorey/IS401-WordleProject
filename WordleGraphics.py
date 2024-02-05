@@ -156,7 +156,7 @@ class WordleGWindow:
                     sq.set_letter(ch)
                     self._col += 1
 
-
+        
         def press_action(tke):
             self._down_x = tke.x
             self._down_y = tke.y
