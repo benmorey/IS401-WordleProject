@@ -38,6 +38,7 @@ def wordle():
     for letter in actual_word:
         wordArray.append(letter)
     
+    # 
     gw = WordleGWindow()
     
     def enter_action(s):
@@ -65,6 +66,7 @@ def wordle():
                 for j in range(0,5):
                     if wordArray[i] == guessWord[j] and gw.get_square_color(row,j) != CORRECT_VARIABLE and booleanArray[i] == False:
                         gw.set_square_color(row, j, PRESENT_VARIABLE)
+                        # Check the keyboard color to see if it's correct or not
                         if gw.get_key_color(gw.get_square_letter(row, j)) != CORRECT_VARIABLE:
                             gw.set_key_color(gw.get_square_letter(row, j), PRESENT_VARIABLE)
                         booleanArray[i] = True
