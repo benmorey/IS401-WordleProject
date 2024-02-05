@@ -60,6 +60,7 @@ def wordle():
             for i in range(0,5):
                 if wordArray[i] == guessWord[i]:
                     gw.set_square_color(row, i, CORRECT_VARIABLE)
+                    gw.set_key_color(gw.get_square_letter(row, i), CORRECT_VARIABLE)
                     booleanArray[i] = True
                        
                     
@@ -68,6 +69,8 @@ def wordle():
                 for j in range(0,5):
                     if wordArray[i] == guessWord[j] and gw.get_square_color(row,j) != CORRECT_VARIABLE and booleanArray[i] == False:
                         gw.set_square_color(row, j, PRESENT_VARIABLE)
+                        if gw.get_key_color(gw.get_square_letter(row, j)) != CORRECT_VARIABLE:
+                            gw.set_key_color(gw.get_square_letter(row, j), PRESENT_VARIABLE)
                         booleanArray[i] = True
                         # guessWord[j] = '-'
 
